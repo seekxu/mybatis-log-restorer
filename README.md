@@ -2,7 +2,7 @@
 
 [**中文**](README.md) | [**English**](README_EN.md)
 
-> 基于 [starxg/mybatis-log-plugin-free](https://github.com/starxg/mybatis-log-plugin-free) 重构，采用独立 ToolWindow 架构，支持 IDEA 2024.1 - 2026.2。
+> 基于 [starxg/mybatis-log-plugin-free](https://github.com/starxg/mybatis-log-plugin-free) 重构，采用独立 ToolWindow 架构，支持 IDEA 2024.1 及以上。
 
 一个 IntelliJ IDEA 插件，拦截 MyBatis 框架输出的 `Preparing` 和 `Parameters` 日志，还原为完整的可执行 SQL 语句。支持多线程日志交错、XML/JSON 大参数续行、多种日志格式适配，底部独立面板展示。
 
@@ -21,7 +21,7 @@
 
 ## 兼容性
 
-支持 IntelliJ IDEA **2024.1 ~ 2026.2**。
+支持 IntelliJ IDEA **2024.1 及以上**版本（无上限限制）。
 
 ## 安装
 

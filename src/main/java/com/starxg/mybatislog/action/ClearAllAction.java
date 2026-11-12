@@ -1,6 +1,5 @@
 package com.starxg.mybatislog.action;
 
-import com.intellij.execution.ExecutionBundle;
 import com.intellij.execution.impl.ConsoleViewImpl;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -21,7 +20,7 @@ public class ClearAllAction extends DumbAwareAction {
     private final MyBatisLogManager manager;
 
     public ClearAllAction(ConsoleViewImpl consoleView, MyBatisLogManager manager) {
-        super(ExecutionBundle.message("clear.all.from.console.action.name"), "Clear All", AllIcons.Actions.GC);
+        super("Clear All", "Clear All", AllIcons.Actions.GC);
         this.consoleView = consoleView;
         this.manager = manager;
     }

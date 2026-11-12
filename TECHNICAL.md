@@ -8,11 +8,10 @@
 |---|---|
 | **项目名称** | MyBatis Log Restorer |
 | **项目类型** | IntelliJ IDEA 平台插件 |
-| **插件 ID** | `com.seekxu.mybatis-log-plugin-free` |
-| **版本** | 2.0.0 |
+| **插件 ID** | `com.seekxu.mybatis-log-restorer` |
 | **作者** | seekxu (Forked from starxg) |
 | **许可证** | GPL v2 |
-| **目标平台** | IntelliJ IDEA 2024.1 ~ 2026.2 (sinceBuild=241, untilBuild=262.*) |
+| **目标平台** | IntelliJ IDEA 2024.1 及以上 (sinceBuild=241，不设 untilBuild) |
 | **语言/框架** | Java 17, IntelliJ Platform SDK 2.18.1 |
 | **构建工具** | Gradle 9.6.1 |
 
@@ -402,7 +401,7 @@ $env:JAVA_HOME = "D:\Program Files\JetBrains\IntelliJ IDEA 2026.2.0.1\jbr"
 
 ### 6.3 部署
 
-1. 构建产物位于 `build/libs/mybatis-log-plugin-free-2.0.0.jar`
+1. 构建产物位于 `build/libs/mybatis-log-restorer-<version>.jar`
 2. IDEA 中安装: **File → Settings → Plugins → ⚙ → Install Plugin from Disk...**
 3. 重启 IDEA
 
@@ -548,7 +547,7 @@ com.starxg.mybatislog.gui.SettingsDialogWrapper
 
 ### 9.3 跨版本兼容性说明
 
-插件支持 IntelliJ IDEA 2024.1 ~ 2026.2。主要 API 兼容点：
+插件支持 IntelliJ IDEA 2024.1 及以上（不设 untilBuild 上限，兼容 2026.3 及未来版本）。主要 API 兼容点：
 - `ToolWindowManagerListener.stateChanged` - 已移除该监听，改为直接操作
 - `ContentFactory.createContent` - 稳定 API，无版本差异
 - `ToolWindowFactory` - 稳定接口
@@ -575,7 +574,7 @@ com.starxg.mybatislog.gui.SettingsDialogWrapper
 |---|---|
 | Java | 17 (source/target compatibility) |
 | IntelliJ Platform SDK | 2.18.1 |
-| IntelliJ IDEA | 2024.1 ~ 2026.2 (sinceBuild=241, untilBuild=262.*) |
+| IntelliJ IDEA | 2024.1 及以上 (sinceBuild=241，不设 untilBuild) |
 | Gradle | 9.6.1 |
 | Apache Commons Lang 3 | 字符串工具 (StringUtils) |
 | JUnit | 4.13.2 |

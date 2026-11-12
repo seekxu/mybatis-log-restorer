@@ -2,7 +2,7 @@
 
 [**中文**](README.md) | [**English**](README_EN.md)
 
-> Forked from [starxg/mybatis-log-plugin-free](https://github.com/starxg/mybatis-log-plugin-free), refactored with independent ToolWindow architecture. Supports IDEA 2024.1 - 2026.2.
+> Forked from [starxg/mybatis-log-plugin-free](https://github.com/starxg/mybatis-log-plugin-free), refactored with independent ToolWindow architecture. Supports IDEA 2024.1 and later.
 
 An IntelliJ IDEA plugin that intercepts MyBatis `Preparing` and `Parameters` console logs and reconstructs them into complete executable SQL statements. Features multi-thread concurrency support, XML/JSON multi-line parameter handling, broad log format compatibility, and a standalone bottom ToolWindow.
 
@@ -22,7 +22,7 @@ An IntelliJ IDEA plugin that intercepts MyBatis `Preparing` and `Parameters` con
 
 ## Compatibility
 
-Supports IntelliJ IDEA **2024.1 ~ 2026.2**.
+Supports IntelliJ IDEA **2024.1 and later** (no upper version limit).
 
 ## Installation
 

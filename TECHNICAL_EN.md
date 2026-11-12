@@ -8,11 +8,10 @@
 |---|---|
 | **Project Name** | MyBatis Log Restorer |
 | **Type** | IntelliJ IDEA Platform Plugin |
-| **Plugin ID** | `com.seekxu.mybatis-log-plugin-free` |
-| **Version** | 2.0.0 |
+| **Plugin ID** | `com.seekxu.mybatis-log-restorer` |
 | **Author** | seekxu (Forked from starxg) |
 | **License** | GPL v2 |
-| **Target Platform** | IntelliJ IDEA 2024.1 ~ 2026.2 (sinceBuild=241, untilBuild=262.*) |
+| **Target Platform** | IntelliJ IDEA 2024.1 and later (sinceBuild=241, no untilBuild) |
 | **Language/Framework** | Java 17, IntelliJ Platform SDK 2.18.1 |
 | **Build Tool** | Gradle 9.6.1 |
 
@@ -393,7 +392,7 @@ $env:JAVA_HOME = "D:\Program Files\JetBrains\IntelliJ IDEA 2026.2.0.1\jbr"
 
 ### 6.3 Deploy
 
-1. Artifact at `build/libs/mybatis-log-plugin-free-2.0.0.jar`
+1. Artifact at `build/libs/mybatis-log-restorer-<version>.jar`
 2. IDE installation: **File → Settings → Plugins → ⚙ → Install Plugin from Disk...**
 3. Restart IDEA
 
@@ -433,7 +432,7 @@ The `.form` file references the `SettingsDialogWrapper` class. Does not affect f
 `gradlew test` crashes with exit code 268435466, possibly related to IDEA platform test sandbox. Unit tests only cover static methods. Workaround: `gradlew build -x test`.
 
 ### 8.3 Version Compatibility
-Supports IDEA 2024.1 ~ 2026.2. Key API compatibility:
+Supports IDEA 2024.1 and later (no untilBuild limit, compatible with 2026.3 and future versions). Key API compatibility:
 - `ContentFactory.createContent` — stable API
 - `ToolWindowFactory` — stable interface
 
@@ -453,7 +452,7 @@ Supports IDEA 2024.1 ~ 2026.2. Key API compatibility:
 |---|---|
 | Java | 17 (source/target) |
 | IntelliJ Platform SDK | 2.18.1 |
-| IntelliJ IDEA | 2024.1 ~ 2026.2 |
+| IntelliJ IDEA | 2024.1 and later |
 | Gradle | 9.6.1 |
 | Apache Commons Lang 3 | StringUtils |
 | JUnit | 4.13.2 |
