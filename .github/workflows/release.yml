@@ -15,7 +15,9 @@ permissions:
   contents: write
 
 concurrency:
-  group: release-${{ github.ref }}
+  # 同版本互斥（tag 推送用 refs/tags/vX，手动运行用输入的版本号），新任务取消旧任务避免删除重建时的竞态
+  group: release-${{ github.event_name == 'workflow_dispatch' && inputs.version || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   release:
