@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: '发布版本号（如 v2.0.1，不存在时将自动创建 tag）'
+        description: '发布版本号（如 v2.0.1）；同名 tag/Release 已存在时会删除重建'
         required: true
         type: string
 
@@ -57,11 +57,14 @@ jobs:
         run: |
           JAR=$(find build/libs -name '*.jar' ! -name '*-base.jar' ! -name '*-instrumented.jar')
           if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "Release $TAG 已存在，覆盖附件"
-            gh release upload "$TAG" "$JAR" --clobber
-          else
-            gh release create "$TAG" \
-              --title "$TAG" \
-              --generate-notes \
-              "$JAR"
+            echo "Release $TAG 已存在，删除 Release 和同名 tag 后重建"
+            gh release delete "$TAG" --yes --cleanup-tag
+          elif git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "Tag $TAG 已存在（无 Release），删除 tag 以便指向最新提交"
+            git push origin ":refs/tags/$TAG"
           fi
+          gh release create "$TAG" \
+            --title "$TAG" \
+            --target "$(git rev-parse HEAD)" \
+            --generate-notes \
+            "$JAR"
