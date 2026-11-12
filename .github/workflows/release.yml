@@ -55,7 +55,24 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ steps.tag.outputs.tag }}
         run: |
+          set -e
+          # 清理空白字符并严格校验，空 TAG 时 gh 会误操作最新 Release，必须提前拦截
+          TAG="$(printf '%s' "$TAG" | tr -d '[:space:]')"
+          echo "event=${{ github.event_name }} ref=${GITHUB_REF_NAME} input='${{ inputs.version }}'"
+          if [ -z "$TAG" ]; then
+            echo "::error::发布版本号为空，请检查手动运行时填写的 version"
+            exit 1
+          fi
+          if ! git check-ref-format "refs/tags/$TAG"; then
+            echo "::error::'$TAG' 不是合法的 tag 名称"
+            exit 1
+          fi
+          echo "发布版本: $TAG"
           JAR=$(find build/libs -name '*.jar' ! -name '*-base.jar' ! -name '*-instrumented.jar')
+          if [ -z "$JAR" ]; then
+            echo "::error::未找到构建产物 jar"
+            exit 1
+          fi
           if gh release view "$TAG" >/dev/null 2>&1; then
             echo "Release $TAG 已存在，删除 Release 和同名 tag 后重建"
             gh release delete "$TAG" --yes --cleanup-tag
